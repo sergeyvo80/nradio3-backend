@@ -32,10 +32,10 @@ export class Station {
   tags: string;
 
   @Prop({ description: 'Disables' })
-  disabled: boolean;
+  disabled?: boolean;
 
-  @Prop({ description: 'isLiked' })
-  isLiked: boolean;
+  // @Prop({ description: 'isLiked' })
+  // isLiked: boolean;
 
   @Prop({ description: 'Дата окончания ' })
   dateUpdated: Date;

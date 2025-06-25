@@ -30,10 +30,10 @@ export class StationType {
   tags: string;
 
   @Field({ description: 'Disables' })
-  disabled: boolean;
+  disabled?: boolean;
 
-  @Field({ description: 'isLiked' })
-  isLiked: boolean;
+  // @Field({ description: 'isLiked' })
+  // isLiked: boolean;
 
   @Field({ description: 'Дата окончания ' })
   dateUpdated: Date;

@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { Station, StationDocument } from '../schemas/station.schema';
-import { GetCourseByIdArgs } from './args/get-course-by-id.args';
+import { GetStationByIdArgs } from './args/get-station-by-id.args';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 
 @Injectable()
 export class StationService {
   constructor(
-    @InjectModel(Station.name) private courseModel: Model<StationDocument>,
+    @InjectModel(Station.name) private stationModel: Model<StationDocument>,
   ) {}
 
   create(): string {
-    const createdCourse = new this.courseModel({
+    const createdCourse = new this.stationModel({
       _id: new Types.ObjectId(),
       title: 'ss',
       name: 'sss',
@@ -22,14 +22,14 @@ export class StationService {
   }
 
   async findAll(): Promise<Station[]> {
-    return [];
-    // return this.courseModel.find().exec();
+    // return [];
+    return this.stationModel.find().exec();
   }
 
-  async getById(args: GetCourseByIdArgs): Promise<Station> {
-    return this.courseModel
+  async getById(args: GetStationByIdArgs): Promise<Station> {
+    return this.stationModel
       .findOne({
-        _id: args.courseId,
+        _id: args.stationId,
       })
       .exec();
   }

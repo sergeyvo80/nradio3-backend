@@ -24,9 +24,6 @@ type Station {
   """Disables"""
   disabled: Boolean!
 
-  """isLiked"""
-  isLiked: Boolean!
-
   """Дата окончания """
   dateUpdated: DateTime!
 }
@@ -47,9 +44,9 @@ type StationPage {
 }
 
 type Query {
-  """Получить список курсов"""
+  """Получить список станций"""
   stations: StationPage!
 
-  """Получить Курс"""
-  getCourseById(courseId: ObjectID!): Station!
+  """Получить станцию"""
+  getCourseById(stationId: ObjectID!): Station!
 }

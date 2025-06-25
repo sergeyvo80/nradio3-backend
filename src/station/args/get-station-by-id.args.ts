@@ -1,10 +1,10 @@
 import { ArgsType } from '@nestjs/graphql';
 import { Types } from 'mongoose';
 import { Field } from '@nestjs/graphql';
-import { GraphQLObjectID } from 'src/graphql/graphQLObjectID';
+import { GraphQLObjectID } from '../../graphql/graphQLObjectID';
 
 @ArgsType()
-export class GetCourseByIdArgs {
+export class GetStationByIdArgs {
   @Field(() => GraphQLObjectID)
-  courseId: Types.ObjectId;
+  stationId: Types.ObjectId;
 }
