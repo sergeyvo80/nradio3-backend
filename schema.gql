@@ -1,0 +1,55 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Station"""
+type Station {
+  _id: ObjectID!
+  name: String!
+  slug: String!
+  title: String!
+
+  """Website"""
+  website: String!
+
+  """Bitrate"""
+  bitrate: String!
+
+  """Stream"""
+  stream: String!
+
+  """Tags"""
+  tags: String!
+
+  """Disables"""
+  disabled: Boolean!
+
+  """isLiked"""
+  isLiked: Boolean!
+
+  """Дата окончания """
+  dateUpdated: DateTime!
+}
+
+"""
+A field whose value conforms with the standard mongodb object ID as described here: https://docs.mongodb.com/manual/reference/method/ObjectId/#ObjectId. Example: 5e5677d71bdc2ae76344968c
+"""
+scalar ObjectID
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type StationPage {
+  items: [Station!]
+  count: Int!
+}
+
+type Query {
+  """Получить список курсов"""
+  stations: StationPage!
+
+  """Получить Курс"""
+  getCourseById(courseId: ObjectID!): Station!
+}
