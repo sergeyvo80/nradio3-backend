@@ -5,23 +5,14 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { GetStationsByTagsArgs } from './args/get-stations-by-tags.args';
 import { GetStationBySlugArgs } from './args/get-station-by-slug.args';
+import { CreateStationArgs } from './args/create-station.args';
+import { UpdateStationArgs } from './args/update-station.args';
 
 @Injectable()
 export class StationService {
   constructor(
     @InjectModel(Station.name) private stationModel: Model<StationDocument>,
   ) {}
-
-  create(): string {
-    const createdCourse = new this.stationModel({
-      _id: new Types.ObjectId(),
-      title: 'ss',
-      name: 'sss',
-    });
-    createdCourse.save();
-
-    return 'station service';
-  }
 
   async findAll(): Promise<Station[]> {
     return this.stationModel.find().exec();
@@ -32,18 +23,49 @@ export class StationService {
   }
 
   async getById(args: GetStationByIdArgs): Promise<Station> {
-    return this.stationModel
-      .findOne({
-        _id: args.stationId,
-      })
-      .exec();
+    return this.stationModel.findOne({ _id: args._id }).exec();
   }
 
   async getBySlug(args: GetStationBySlugArgs): Promise<Station> {
-    return this.stationModel
-      .findOne({
-        _id: args.slug,
-      })
-      .exec();
+    return this.stationModel.findOne({ slug: args.slug }).exec();
+  }
+
+  async create(args: CreateStationArgs): Promise<Station> {
+    const date = new Date();
+    const station = new this.stationModel({
+      ...args,
+      _id: new Types.ObjectId(),
+      dateAdded: date,
+      dateUpdated: date,
+    });
+    await station.save();
+
+    return station;
+  }
+
+  async updateById(args: UpdateStationArgs): Promise<Station> {
+    const date = new Date();
+
+    return this.stationModel.findOneAndUpdate(
+      { _id: args._id },
+      {
+        $set: {
+          ...args,
+          dateUpdated: date,
+        },
+      },
+    );
+  }
+
+  async delete(args: GetStationByIdArgs): Promise<boolean> {
+    try {
+      const result = await this.stationModel
+        .deleteOne({ _id: args._id })
+        .exec();
+      return result.deletedCount > 0;
+    } catch (e: unknown) {
+      console.error(e);
+      throw e;
+    }
   }
 }

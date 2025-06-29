@@ -1,0 +1,5 @@
+mutation deleteStationById {
+  deleteStationById(
+    _id: "68613822ce989deea59c9ce3"
+  )
+}

@@ -1,0 +1,18 @@
+query getStationBySlug {
+  getStationBySlug(
+    slug: "progressive-psyradio-fm"
+  ) {
+    _id
+    name
+    slug
+    title
+    website
+    bitrate
+    stream
+    tags
+    disabled
+    dateAdded
+    dateUpdated
+  }
+}
+

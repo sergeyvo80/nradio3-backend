@@ -1,0 +1,18 @@
+query getStationById {
+  getStationById(
+    _id: "68613822ce989deea59c9ce3"
+  ) {
+    _id
+    name
+    slug
+    title
+    website
+    bitrate
+    stream
+    tags
+    disabled
+    dateAdded
+    dateUpdated
+  }
+}
+

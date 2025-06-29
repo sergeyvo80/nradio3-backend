@@ -1,9 +1,9 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { ArgsType, Field } from '@nestjs/graphql';
 import { Types } from 'mongoose';
 import { GraphQLObjectID } from 'src/graphql/graphQLObjectID';
 
-@ObjectType('Station', { description: 'Station' })
-export class StationType {
+@ArgsType()
+export class UpdateStationArgs {
   @Field(() => GraphQLObjectID)
   _id: Types.ObjectId;
 
@@ -26,14 +26,8 @@ export class StationType {
   stream: string;
 
   @Field(() => [String])
-  declare tags: string[];
+  tags: string[];
 
   @Field({ description: 'Disabled' })
   disabled?: boolean;
-
-  @Field({ description: 'Date of added' })
-  dateAdded: Date;
-
-  @Field({ description: 'Date of updated' })
-  dateUpdated: Date;
 }

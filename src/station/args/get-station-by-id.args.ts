@@ -6,5 +6,5 @@ import { GraphQLObjectID } from '../../graphql/graphQLObjectID';
 @ArgsType()
 export class GetStationByIdArgs {
   @Field(() => GraphQLObjectID)
-  stationId: Types.ObjectId;
+  _id: Types.ObjectId;
 }

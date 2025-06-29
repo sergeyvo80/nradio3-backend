@@ -51,9 +51,55 @@ type Query {
   """Получить список станций"""
   getStationsByTags(tags: [String!]!): StationPage!
 
-  """Получить станцию"""
-  getStationById(stationId: ObjectID!): Station!
+  """Получить станцию по id"""
+  getStationById(_id: ObjectID!): Station!
 
-  """Получить станцию"""
+  """Получить станцию по slug"""
   getStationBySlug(slug: String!): Station!
+}
+
+type Mutation {
+  """Создание станции"""
+  createStation(
+    name: String!
+    slug: String!
+    title: String!
+
+    """Website"""
+    website: String!
+
+    """Bitrate"""
+    bitrate: String!
+
+    """Stream"""
+    stream: String!
+    tags: [String!]!
+
+    """Disabled"""
+    disabled: Boolean!
+  ): Station!
+
+  """Обновление станции"""
+  updateStationById(
+    _id: ObjectID!
+    name: String!
+    slug: String!
+    title: String!
+
+    """Website"""
+    website: String!
+
+    """Bitrate"""
+    bitrate: String!
+
+    """Stream"""
+    stream: String!
+    tags: [String!]!
+
+    """Disabled"""
+    disabled: Boolean!
+  ): Station!
+
+  """Удаление станции"""
+  deleteStationById(_id: ObjectID!): Boolean!
 }

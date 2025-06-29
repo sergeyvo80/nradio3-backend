@@ -1,0 +1,20 @@
+query getStationsByTags {
+  getStationsByTags(
+    tags: ["chillout"]
+  ) {
+    items {
+      _id
+      name
+      slug
+      title
+      website
+      bitrate
+      stream
+      tags
+      # disabled
+      dateAdded
+      dateUpdated
+    }
+  }
+}
+

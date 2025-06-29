@@ -1,0 +1,25 @@
+mutation updateStationById {
+  updateStationById(
+    _id: "68613822ce989deea59c9ce3"
+    name: "test name2"
+    slug: "test-slug"
+    title: ""
+    website: ""
+    bitrate: ""
+    stream: "https://test.streac"
+    tags: ["test"]
+    disabled: false
+  ){
+    _id
+    name
+    slug
+    title
+    website
+    bitrate
+    stream
+    tags
+    disabled
+    dateAdded
+    dateUpdated
+  }
+}
