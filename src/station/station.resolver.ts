@@ -1,16 +1,17 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { StationService } from './station.service';
-// import { Course } from './models/course.model';
 import { StationPage } from '../graphql/station-page.type';
 import { GetStationByIdArgs } from './args/get-station-by-id.args';
+import { GetStationsByTagsArgs } from './args/get-stations-by-tags.args';
 import { StationType } from '../graphql/station.type';
+import { GetStationBySlugArgs } from './args/get-station-by-slug.args';
 
 @Resolver()
 export class StationResolver {
   constructor(private readonly stationService: StationService) {}
 
   @Query(() => StationPage, { description: 'Получить список станций' })
-  async stations() {
+  async getStations() {
     const items = await this.stationService.findAll();
 
     return {
@@ -18,10 +19,26 @@ export class StationResolver {
     };
   }
 
-  @Query(() => StationType, { description: 'Получить станцию' })
-  async getCourseById(@Args() args: GetStationByIdArgs) {
-    const course = await this.stationService.getById(args);
+  @Query(() => StationPage, { description: 'Получить список станций' })
+  async getStationsByTags(@Args() args: GetStationsByTagsArgs) {
+    const items = await this.stationService.findByTags(args);
 
-    return course;
+    return {
+      items,
+    };
+  }
+
+  @Query(() => StationType, { description: 'Получить станцию' })
+  async getStationById(@Args() args: GetStationByIdArgs) {
+    const station = await this.stationService.getById(args);
+
+    return station;
+  }
+
+  @Query(() => StationType, { description: 'Получить станцию' })
+  async getStationBySlug(@Args() args: GetStationBySlugArgs) {
+    const station = await this.stationService.getBySlug(args);
+
+    return station;
   }
 }

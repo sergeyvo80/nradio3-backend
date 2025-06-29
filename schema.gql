@@ -17,14 +17,15 @@ type Station {
 
   """Stream"""
   stream: String!
+  tags: [String!]!
 
-  """Tags"""
-  tags: String!
-
-  """Disables"""
+  """Disabled"""
   disabled: Boolean!
 
-  """Дата окончания """
+  """Date of added"""
+  dateAdded: DateTime!
+
+  """Date of updated"""
   dateUpdated: DateTime!
 }
 
@@ -45,8 +46,14 @@ type StationPage {
 
 type Query {
   """Получить список станций"""
-  stations: StationPage!
+  getStations: StationPage!
+
+  """Получить список станций"""
+  getStationsByTags(tags: [String!]!): StationPage!
 
   """Получить станцию"""
-  getCourseById(stationId: ObjectID!): Station!
+  getStationById(stationId: ObjectID!): Station!
+
+  """Получить станцию"""
+  getStationBySlug(slug: String!): Station!
 }

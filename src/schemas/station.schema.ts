@@ -29,15 +29,15 @@ export class Station {
   stream: string;
 
   @Prop({ description: 'Tags' })
-  tags: string;
+  tags: string[];
 
   @Prop({ description: 'Disables' })
-  disabled?: boolean;
+  disabled: boolean;
 
-  // @Prop({ description: 'isLiked' })
-  // isLiked: boolean;
+  @Prop({ description: 'Date of added' })
+  dateAdded: Date;
 
-  @Prop({ description: 'Дата окончания ' })
+  @Prop({ description: 'Date of updated' })
   dateUpdated: Date;
 }
 

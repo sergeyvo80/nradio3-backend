@@ -26,15 +26,16 @@ export class StationType {
   @Field({ description: 'Stream' })
   stream: string;
 
-  @Field({ description: 'Tags' })
-  tags: string;
+  // @Field({ description: 'Tags' })
+  @Field(() => [String])
+  declare tags: string[];
 
-  @Field({ description: 'Disables' })
+  @Field({ description: 'Disabled' })
   disabled?: boolean;
 
-  // @Field({ description: 'isLiked' })
-  // isLiked: boolean;
+  @Field({ description: 'Date of added' })
+  dateAdded: Date;
 
-  @Field({ description: 'Дата окончания ' })
+  @Field({ description: 'Date of updated' })
   dateUpdated: Date;
 }
