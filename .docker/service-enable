@@ -1,0 +1,4 @@
+sudo ln -s /var/www/nradio3-backend/.docker/nradio3backend.service /lib/systemd/system/nradio3backend.service
+systemctl enable nradio3backend.service
+systemctl start nradio3backend.service
+sudo systemctl daemon-reload

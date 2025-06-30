@@ -6,7 +6,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 // import { ApolloError } from '@apollo/server';
 import { StationModule } from './station/station.module';
 import { MongooseModule } from '@nestjs/mongoose';
-// import { ConfigModule } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -26,10 +26,11 @@ import { MongooseModule } from '@nestjs/mongoose';
       //   new ApolloError(err.message, undefined, err.extensions),
     }),
     MongooseModule.forRoot('mongodb://localhost:27017/nradio3'),
+    // MongooseModule.forRoot(process.env.MONGO),
     StationModule,
-    // ConfigModule.forRoot({
-    //   envFilePath: '.env.local',
-    // }),
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
