@@ -9,7 +9,6 @@ query getStations {
       bitrate
       stream
       tags
-      # disabled
       dateAdded
       dateUpdated
     }

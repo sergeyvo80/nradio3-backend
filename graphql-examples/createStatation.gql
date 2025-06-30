@@ -17,7 +17,6 @@
           bitrate
           stream
           tags
-          # disabled
           dateAdded
           dateUpdated
         }
