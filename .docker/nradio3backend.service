@@ -3,7 +3,7 @@ Description=nradio3backend
 
 [Service]
 Type=simple
-ExecStart=npm start
+ExecStart=npm run start:prod
 Restart=always
 User=www-data
 Group=www-data
