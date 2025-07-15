@@ -1,15 +1,7 @@
-import { Args, Query, Resolver, Mutation } from '@nestjs/graphql';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 // import { AppService } from './app.service';
 
 import { UserService } from './user.service';
-// import { StationPage } from '../graphql/station-page.type';
-// import { GetStationByIdArgs } from './args/get-station-by-id.args';
-// import { GetStationsByTagsArgs } from './args/get-stations-by-tags.args';?
-// import { StationType } from '../graphql/station.type';
-// import { GetStationBySlugArgs } from './args/get-station-by-slug.args';
-// import { CreateStationArgs } from './args/create-station.args';
-// import { UpdateStationArgs } from './args/update-station.args';
 
 @Controller()
 export class UserController {
