@@ -5,4 +5,8 @@ export class AppService {
   getHello(): string {
     return 'NRadio3 backend!';
   }
+
+  disableProblems(): string {
+    return 'NRadio3 backend!';
+  }
 }

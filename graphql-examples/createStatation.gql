@@ -1,23 +1,23 @@
-    mutation createStation {
-        createStation(
-          name: "test name"
-          slug: "test-slug"
-          title: ""
-          website: ""
-          bitrate: ""
-          stream: "https://test.streac"
-          tags: ["test"]
-          disabled: false
-        ){
-          _id
-          name
-          slug
-          title
-          website
-          bitrate
-          stream
-          tags
-          dateAdded
-          dateUpdated
-        }
+mutation createStation {
+    createStation(
+      name: "test name"
+      slug: "test-slug"
+      title: ""
+      website: ""
+      bitrate: ""
+      stream: "https://test.streac"
+      tags: ["test"]
+      disabled: false
+    ){
+      _id
+      name
+      slug
+      title
+      website
+      bitrate
+      stream
+      tags
+      dateAdded
+      dateUpdated
     }
+}
