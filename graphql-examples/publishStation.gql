@@ -1,0 +1,21 @@
+mutation publishStation {
+  publishStation(
+    title: "test name"
+    uuid: "uuid"
+    stream: "https://test.streac"
+    description: ""
+    website: ""
+    tags: []
+  ){
+    _id
+    name
+    slug
+    title
+    website
+    bitrate
+    stream
+    tags
+    dateAdded
+    dateUpdated
+  }
+}

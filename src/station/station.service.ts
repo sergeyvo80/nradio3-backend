@@ -7,6 +7,7 @@ import { GetStationsByTagsArgs } from './args/get-stations-by-tags.args';
 import { GetStationBySlugArgs } from './args/get-station-by-slug.args';
 import { CreateStationArgs } from './args/create-station.args';
 import { UpdateStationArgs } from './args/update-station.args';
+import { PublishStationArgs } from './args/publish-station.args';
 
 @Injectable()
 export class StationService {
@@ -15,7 +16,7 @@ export class StationService {
   ) {}
 
   async findAll(): Promise<Station[]> {
-    return this.stationModel.find().exec();
+    return this.stationModel.find({ disabled: false }).exec();
   }
 
   async findByTags(args: GetStationsByTagsArgs): Promise<Station[]> {
@@ -32,8 +33,26 @@ export class StationService {
 
   async create(args: CreateStationArgs): Promise<Station> {
     const date = new Date();
+
     const station = new this.stationModel({
       ...args,
+      _id: new Types.ObjectId(),
+      dateAdded: date,
+      dateUpdated: date,
+    });
+    await station.save();
+
+    return station;
+  }
+
+  async publish(args: PublishStationArgs): Promise<Station> {
+    const date = new Date();
+    const station = new this.stationModel({
+      ...args,
+      name: args.title,
+      slug: '',
+      disabled: true,
+      bitrate: '',
       _id: new Types.ObjectId(),
       dateAdded: date,
       dateUpdated: date,

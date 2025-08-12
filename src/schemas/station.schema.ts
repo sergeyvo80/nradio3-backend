@@ -11,6 +11,9 @@ export class Station {
   _id: ObjectId;
 
   @Prop({ optional: true })
+  uuid?: string;
+
+  @Prop({ optional: true })
   name?: string;
 
   @Prop()
@@ -19,19 +22,22 @@ export class Station {
   @Prop()
   title: string;
 
-  @Prop({ description: 'Website' })
+  @Prop({ optional: true })
+  description: string;
+
+  @Prop({ description: 'Website', optional: true })
   website: string;
 
-  @Prop({ description: 'Bitrate' })
+  @Prop({ description: 'Bitrate', optional: true })
   bitrate: string;
 
   @Prop({ description: 'Stream' })
   stream: string;
 
-  @Prop({ description: 'Tags' })
+  @Prop({ description: 'Tags', optional: true })
   tags: string[];
 
-  @Prop({ description: 'Disables' })
+  @Prop({ description: 'Disables', optional: true })
   disabled: boolean;
 
   @Prop({ description: 'Date of added' })

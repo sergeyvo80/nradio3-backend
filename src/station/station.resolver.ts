@@ -7,6 +7,7 @@ import { StationType } from '../graphql/station.type';
 import { GetStationBySlugArgs } from './args/get-station-by-slug.args';
 import { CreateStationArgs } from './args/create-station.args';
 import { UpdateStationArgs } from './args/update-station.args';
+import { PublishStationArgs } from './args/publish-station.args';
 
 @Resolver()
 export class StationResolver {
@@ -38,6 +39,11 @@ export class StationResolver {
   @Query(() => StationType, { description: 'Получить станцию по slug' })
   async getStationBySlug(@Args() args: GetStationBySlugArgs) {
     return this.stationService.getBySlug(args);
+  }
+
+  @Mutation(() => StationType, { description: 'Публикация станции' })
+  async publishStation(@Args() args: PublishStationArgs): Promise<StationType> {
+    return this.stationService.publish(args);
   }
 
   @Mutation(() => StationType, { description: 'Создание станции' })

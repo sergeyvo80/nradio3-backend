@@ -9,6 +9,9 @@ export class CourseType {
   _id: Types.ObjectId;
 
   @Field()
+  uuid?: string;
+
+  @Field()
   name?: string;
 
   @Field()

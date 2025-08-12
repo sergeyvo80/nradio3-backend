@@ -5,6 +5,7 @@
 """Station"""
 type Station {
   _id: ObjectID!
+  uuid: String!
   name: String!
   slug: String!
   title: String!
@@ -59,6 +60,9 @@ type Query {
 }
 
 type Mutation {
+  """Публикация станции"""
+  publishStation(uuid: String!, title: String!, description: String!, website: String!, stream: String!, tags: [String!]!): Station!
+
   """Создание станции"""
   createStation(
     name: String!
