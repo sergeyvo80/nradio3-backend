@@ -37,6 +37,7 @@ export class StationService {
     const station = new this.stationModel({
       ...args,
       _id: new Types.ObjectId(),
+      uuid: '',
       dateAdded: date,
       dateUpdated: date,
     });
@@ -50,7 +51,7 @@ export class StationService {
     const station = new this.stationModel({
       ...args,
       name: args.title,
-      slug: '',
+      // slug: args.uuid,
       disabled: true,
       bitrate: '',
       _id: new Types.ObjectId(),

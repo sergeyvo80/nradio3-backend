@@ -61,7 +61,7 @@ type Query {
 
 type Mutation {
   """Публикация станции"""
-  publishStation(uuid: String!, title: String!, description: String!, website: String!, stream: String!, tags: [String!]!): Station!
+  publishStation(uuid: String!, slug: String!, title: String!, description: String!, website: String!, stream: String!, tags: [String!]!): Station!
 
   """Создание станции"""
   createStation(

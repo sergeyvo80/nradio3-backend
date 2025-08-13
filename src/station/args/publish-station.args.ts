@@ -6,6 +6,9 @@ export class PublishStationArgs {
   uuid: string;
 
   @Field()
+  slug: string;
+
+  @Field()
   title: string;
 
   @Field()
